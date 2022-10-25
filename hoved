@@ -1,7 +1,7 @@
 class Hotel: 
-  """
-  rom (int): antall rom på hotellet
-  """
-  def __init__(self, rom):
-    self.rom = rom
-    self.gjester = 0
+    """
+    rom (int): antall rom på hotellet
+    """
+    def __init__(self, rom):
+        self.rom = rom
+        self.gjester = 0
