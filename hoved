@@ -15,6 +15,34 @@ class Hotell:
         self.maksAntGjester = rom*self.sengPerRom
         self.antGjester = 0
     
+    def reservasjon(self):
+        navn = input("Skriv inn navn: ")
+        postnummer = input("Skriv inn postnummer: ")
+        email = input("Skriv inn email: ")
+        for i in range(len(self.gjester)):
+            if navn == self.gjester[i].navn and email == self.gjester.email:
+                print("Kunden har allerede en reservasjon!")
+                # return
+        gjest = input("Skriv inn antallet gjester du bestiller for: ")
+        netter = int(input("Skriv inn antall netter: "))
+        kunden = Kunde(navn, postnummer, email, gjest)
+
+        self.kapasitet += -1
+        self.gjester.append(kunden)
+
+        print("\n--------RESERVASJON-------")
+        print(f" Kunde ( {kunden} ) med:")
+        print(f" Navn -{navn}")
+        print(f" Postnummer -{postnummer}")
+        print(f" Bestiller for {gjest} personer, for {netter} antall netter.")
+
+        print("---------------------------")
+        print(f"Gjenstående kapasitet: {self.kapasitet}")
+        print(f"Register: {self.gjester}")
+        print("---------------------------")
+
+        # Hotell.sendRegning()
+    
     def sjekkLedigRom(self):
         """
         Sjekker antall ledige rom på hotellet.
