@@ -72,6 +72,52 @@ class Hotell:
         variabel = input("Tilbake til meny (tast m): ")
         if( variabel == 'm'):
             meny == True
+            
+    def sendRegning(self):
+        """
+        sender regning til epost til bruker.
+        finner index til gjest basert på navn;
+            svakhet hvis flere bestillinger ved samme navn
+        regner ut totalsum og printer dette til konsollen
+        hvis besillingsnavn ikke eksisterer printes dette
+        """
+        prisNatt = 1000
+        rabattkode10 = "10av"
+        rabattkode20 = "20av"
+        
+        navn = input("Skriv inn hele navnet du reserverte bestillingen med: ")
+        
+        bestilling = False
+        
+        for n in range(len(self.register)):
+            print(n)
+            print(self.register[n].navn)
+            if navn == self.register[n].navn:
+                bestilling = True
+                i = n
+                
+        if bestilling == True:
+            
+            svar = input("Har du rabattkode? Skriv 'ja' eller 'nei': ")
+            
+            if svar == "ja":
+                rabattkode = input("Rabattkode: ")
+            
+                if rabattkode == rabattkode10:
+                    print(f"Regning er sendt til {self.register[i].navn} og epost {self.register[i].email}.")
+                    totSum = prisNatt * int(self.register[i].netter) * int(self.register[i].gjestKunde) * 0.9
+                    print("Totalsum ble på: ", totSum)
+                elif rabattkode == rabattkode20:
+                    print(f"Regning er sendt til {self.register[i].navn} og epost {self.register[i].email}.")
+                    totSum = prisNatt * int(self.register[i].netter) * int(self.register[i].gjestKunde) * 0.8
+                    print("Totalsum ble på: ", totSum)
+                    
+            elif svar == "nei":
+                print(f"Regning er sendt til {self.register[i].navn} og epost {self.register[i].email}.")
+                totSum = prisNatt * int(self.register[i].netter) * int(self.register[i].gjestKunde)
+                print("Totalsum ble på: ", totSum)
+        else: 
+            print("Navnet du skrev inn har ingen bestilling liggende hos hotellet.")
 
 
 
