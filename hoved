@@ -81,7 +81,7 @@ while True:
     if valg == 'b':
         sjosiden.reservasjon()
     if valg == 'l':
-        sjosiden.sjekkLedigRom
+        sjosiden.sjekkLedigRom()
     """
     if valg = 'e':
         Kunde.endreReservasjon()
