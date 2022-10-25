@@ -1,4 +1,4 @@
-
+meny = True
 class Hotell: 
     """
     Klasse for å lage hotellobjekter. 
@@ -58,7 +58,9 @@ class Hotell:
             print(f"Det er {self.kapasitet} ledige rom på hotellet.")
             ledigSengeplass = self.maksAntGjester - self.antGjester
             print(f"Dette tilsvarer {ledigSengeplass} ledige sengeplasser.")
-
+        variabel = input("Tilbake til meny (tast m): ")
+        if( variabel == 'm'):
+            meny == True
 
 
 
@@ -92,13 +94,14 @@ class Kunde:
     """
 
 sjosiden = Hotell(10)
-while True:
+
+while meny == True:
     print("")
     print("---------------------------------------")
     print("Velkommen til Sjøsiden Hotell!")
     print("---------------------------------------")
     print("")
-    print("Skriv 'r' for reserver")
+    print("Skriv 'r' for å reservere")
     print("Skriv 'l' for å sjekke ledige rom")
     print("Skriv 'e' for å endre reservasjon")
     print("Skriv 'o' for å oppdatere kundeinformasjon")
@@ -106,7 +109,7 @@ while True:
     print("Skriv 'd' for å avslutte")
     valg = input("Skriv handlingen du vil gjøre: ")
 
-    if valg == 'b':
+    if valg == 'r':
         sjosiden.reservasjon()
     if valg == 'l':
         sjosiden.sjekkLedigRom()
