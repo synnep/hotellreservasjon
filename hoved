@@ -20,9 +20,9 @@ class Hotell:
         """
         Metode som utfører reservasjon av et rom.
 
-        Bruker inputs for å få til 
-        """
-        
+        Bruker inputs for å få ti
+        """ 
+        print("")
         navn = input("Skriv inn navn: ")
         postnummer = input("Skriv inn postnummer: ")
         email = input("Skriv inn email: ")
@@ -83,14 +83,17 @@ class Kunde:
         Postnummer (str)
         Email (str)
         Rabattkode (str)
+        Antall gjester per rom (int)
+        Antall netter (int)  
     """
 
     # Inisialiseringskoden. Definerer noen parametre til kundeobjektet
-    def __init__(self, navn, postnummer, email, rabattkode):
+    def __init__(self, navn, postnummer, email, rabattkode, gjester, netter):
         self.navn = navn
         self.postnummer = postnummer
         self.email = email
         self.rabattkode = rabattkode
+        self.antallNetter = netter
 
     # OPPGAVE I: TENGER KANSKJE OPPDATERING SENERE
     def visInfo(self):
