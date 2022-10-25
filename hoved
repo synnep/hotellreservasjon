@@ -39,6 +39,7 @@ class Hotell:
         kunden = Kunde(navn, postnummer, email, gjest, netter)
 
         self.kapasitet -= 1
+        self.antGjester += gjest
         self.gjester.append(kunden)
 
         print("\n-------<RESERVASJON>------")
