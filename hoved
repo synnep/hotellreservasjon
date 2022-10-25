@@ -63,7 +63,7 @@ class Kunde:
     def endreReservasjon(self, navn, email)
     """
 
-
+sjosiden = Hotell(10)
 while True:
     print("")
     print("---------------------------------------")
