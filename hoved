@@ -1,5 +1,6 @@
 class Hotel: 
     """
+    Klasse for å lage hotell-objekter
     rom (int): antall rom på hotellet
     """
     def __init__(self, rom):
