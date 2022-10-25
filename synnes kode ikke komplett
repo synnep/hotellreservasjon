@@ -1,3 +1,4 @@
+
 class Hotell: 
     """
     Klasse for å lage hotellobjekter. 
@@ -112,7 +113,7 @@ class Hotell:
         else: 
             print("Navnet du skrev inn har ingen bestilling liggende hos hotellet.")
 
-
+sjosiden = Hotell(10)
 
 class Kunde:
     """
@@ -139,22 +140,19 @@ class Kunde:
         print(f"\tNavn: {self.navn}")
         print(f"\tEmail: {self.email}")
         print(f"\tRabattkode: {self.rabattkode}")
-    """
-    def endreReservasjon(self, navn, email)
-    """
+     def endreRes(self,navn1,email1):
+        sjosiden.register[r].gjestKunde = input(f"antall gjester (tidligere {sjosiden.register[r].gjestKunde}): ")
+        sjosiden.register[r].netter = input(f"antall netter (tidligere {sjosiden.register[r].netter})")
 
-sjosiden = Hotell(10)
-
-while True:
+while meny == True:
     print("")
     print("---------------------------------------")
     print("Velkommen til Sjøsiden Hotell!")
     print("---------------------------------------")
     print("")
-    print("Skriv 'r' for reserver")
+    print("Skriv 'r' for å reservere")
     print("Skriv 'l' for å sjekke ledige rom")
     print("Skriv 'e' for å endre reservasjon")
-    print("Skriv 'b' for å få betaling")
     print("Skriv 'o' for å oppdatere kundeinformasjon")
     print("Skriv 'p' for å printe ut kundeinformasjon")
     print("Skriv 'd' for å avslutte")
@@ -164,11 +162,13 @@ while True:
         sjosiden.reservasjon()
     if valg == 'l':
         sjosiden.sjekkLedigRom()
-    if valg == 'b':
-        sjosiden.sendRegning()
+    if valg == 'e':
+        navn1 = input("navn: ")
+        email1 = input("email: ")
+        for r in range(len(sjosiden.register)):
+            if(sjosiden.register[r].navn == navn1 and sjosiden.register[r].email == email1):
+                sjosiden.register[r].endreRes(navn1,email1)
     """
-    if valg = 'e':
-        Kunde.endreReservasjon()
     if valg == 'o':
         Kunde.oppdaterKundeInfo()
     if valg = 'p':
