@@ -1,11 +1,3 @@
-print("Hello World")
-
-print("Are var her")
-
-print("og Trygve også")
-
-print("Synne er her")
-
 class Hotel: 
   """
   rom (int): antall rom på hotellet
