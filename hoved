@@ -49,3 +49,5 @@ while True:
 
     if valg == 'b':
         Hotell.reservasjon()
+    if valg == 'd':
+        break
