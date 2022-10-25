@@ -20,8 +20,9 @@ class Hotell:
         """
         Metode som utfører reservasjon av et rom.
 
-        Bruker inputs for å få ti
-        """ 
+        Bruker inputs for å få verdier til parametre for kundeklassen, og lager en kunde.
+        Kunden tar et rom, så de kapasitet skal bli 1 mindre
+        """
         print("")
         navn = input("Skriv inn navn: ")
         postnummer = input("Skriv inn postnummer: ")
