@@ -31,7 +31,7 @@ class Hotell:
             if navn == self.gjester[i].navn and email == self.gjester[i].email:
                 print("Kunden har allerede en reservasjon!")
                 return "Dobbelbook"
-        gjest = input("Skriv inn antallet gjester du bestiller for: ")
+        gjest = int(input("Skriv inn antallet gjester du bestiller for: "))
         if gjest > self.sengPerRom: # hvis mindre enn 0 
             print(f"Det er {self.sengPerRom} per rom, så da må du reservere flere ulike rom.")
             return "For mange gjester per rom"
