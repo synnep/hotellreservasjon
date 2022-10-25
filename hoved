@@ -51,5 +51,9 @@ while True:
 
     if valg == 'b':
         Hotell.reservasjon()
+    """
+    if valg = 'e':
+        Kunde.endreReservasjon()
+    """
     if valg == 'd':
         break
