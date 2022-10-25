@@ -1,13 +1,35 @@
+
 class Hotell: 
     """
-    Klasse for å lage hotell-objekter
-    rom (int): antall rom på hotellet
+    Klasse for å lage hotellobjekter. 
+    
+    parametere: 
+        rom (int): antall rom på hotellet
+        gjester (int): 0
     """
     def __init__(self, rom):
         self.rom = rom
-        self.kapasitet = rom
         self.gjester = []
-
+        self.kapasitet = rom
+        self.sengPerRom = 4
+        self.maksAntGjester = rom*self.sengPerRom
+        self.antGjester = 0
+    
+    def sjekkLedigRom(self):
+        """
+        Sjekker antall ledige rom på hotellet.
+        Finner også antall ledige sengeplasser.
+            Hvis et rom et tatt, men ikke alle sengeplasser, telles fortsatt 
+            disse sengeplassene. 
+        Printer verdierne til ledige rom og ledige sengeplasser.
+        """
+        if self.kapasitet == 0:
+            print("Det er ingen ledige rom på hotellet.")
+            print("Bedre lykke på vårt fantastiske hotell neste gang.")
+        else:
+            print(f"Det er {self.kapasitet} ledige rom på hotellet.")
+            ledigSengeplass = self.maksAntGjester - self.antGjester
+            print(f"Dette tilsvarer {ledigSengeplass} ledige sengeplasser.")
 
 
 
