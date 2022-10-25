@@ -5,7 +5,8 @@ class Hotel:
     """
     def __init__(self, rom):
         self.rom = rom
-        self.gjester = 0
+        self.kapasitet = rom
+        self.gjester = []
 
 
 
