@@ -64,18 +64,31 @@ class Kunde:
     """
 
 
-#FORSLAG
 while True:
+    print("")
+    print("---------------------------------------")
+    print("Velkommen til Sjøsiden Hotell!")
+    print("---------------------------------------")
+    print("")
     print("Skriv 'r' for reserver")
     print("Skriv 'l' for å sjekke ledige rom")
-    print("Skriv '' for å sjekke ledige rom")
+    print("Skriv 'e' for å endre reservasjon")
+    print("Skriv 'o' for å oppdatere kundeinformasjon")
+    print("Skriv 'p' for å printe ut kundeinformasjon")
+    print("Skriv 'd' for å avslutte")
     valg = input("Skriv handlingen du vil gjøre: ")
 
     if valg == 'b':
-        Hotell.reservasjon()
+        sjosiden.reservasjon()
+    if valg == 'l':
+        sjosiden.sjekkLedigRom
     """
     if valg = 'e':
         Kunde.endreReservasjon()
+    if valg == 'o':
+        Kunde.oppdaterKundeInfo()
+    if valg = 'p':
+        Kunde.visInfo()
     """
     if valg == 'd':
         break
