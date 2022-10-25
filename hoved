@@ -5,3 +5,33 @@ class Hotel:
     def __init__(self, rom):
         self.rom = rom
         self.gjester = 0
+
+
+
+
+
+
+class Kunde:
+    """
+    Klasse for å lage kunde-objekter.
+
+    Parametre:
+        Navn (str)
+        Postnummer (str)
+        Email (str)
+        Rabattkode (str)
+    """
+
+    # Inisialiseringskoden. Definerer noen parametre til kundeobjektet
+    def __init__(self, navn, postnummer, email, rabattkode):
+        self.navn = navn
+        self.postnummer = postnummer
+        self.email = email
+        self.rabattkode = rabattkode
+
+    # OPPGAVE I: TENGER KANSKJE OPPDATERING SENERE
+    def visInfo(self):
+        print("\n*-*KUNDE*-*")
+        print(f"\tNavn: {self.navn}")
+        print(f"\tEmail: {self.email}")
+        print(f"\tRabattkode: {self.rabattkode}")
