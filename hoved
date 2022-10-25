@@ -37,3 +37,15 @@ class Kunde:
         print(f"\tNavn: {self.navn}")
         print(f"\tEmail: {self.email}")
         print(f"\tRabattkode: {self.rabattkode}")
+
+
+
+#FORSLAG
+while True:
+    print("Skriv 'r' for reserver")
+    print("Skriv 'l' for å sjekke ledige rom")
+    print("Skriv '' for å sjekke ledige rom")
+    valg = input("Skriv handlingen du vil gjøre: ")
+
+    if valg == 'b':
+        Hotell.reservasjon()
