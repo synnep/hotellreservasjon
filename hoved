@@ -5,3 +5,11 @@ print("Are var her")
 print("og Trygve også")
 
 print("Synne er her")
+
+class Hotel: 
+  """
+  rom (int): antall rom på hotellet
+  """
+  def __init__(self, rom):
+    self.rom = rom
+    self.gjester = 0
