@@ -36,7 +36,7 @@ class Hotell:
             print(f"Det er {self.sengPerRom} per rom, så da må du reservere flere ulike rom.")
             return "For mange gjester per rom"
         netter = int(input("Skriv inn antall netter: "))
-        kunden = Kunde(navn, postnummer, email, gjest)
+        kunden = Kunde(navn, postnummer, email, gjest, netter)
 
         self.kapasitet -= 1
         self.gjester.append(kunden)
