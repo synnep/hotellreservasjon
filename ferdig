@@ -263,18 +263,23 @@ while True:
     #hvis bruker velger reservasjon
     if valg == 'r':
         sjosiden.reservasjon()
+        
     #hvis bruker velger sjekk ledige rom
     if valg == 'l':
         sjosiden.sjekkLedigRom()
+        
     #hvis bruker velger å endre reservasjonen
     if valg == 'e':
         navn1 = input("navn: ")
         email1 = input("email: ")
+        eksistere1 = False
         for r in range(len(sjosiden.register)):
             if(sjosiden.register[r].navn == navn1 and sjosiden.register[r].email == email1):
                 sjosiden.register[r].endreRes(r)
-            else:
-                print("Fant ikke bestillingen din, skriv inn navn på nytt")
+                eksistere1 = True
+        if eksistere1 == False:
+            print("Fant ikke bestillingen din, skriv inn navn på nytt")
+            
     #hvis bruker velger printe reservasjonen
     if valg == 'p':
         navn = input("Skriv inn navn på kunden: ")
@@ -286,9 +291,11 @@ while True:
                 eksistere = True
         if eksistere == False:
             print("Kunden eksisterer ikke")
+            
     #hvis bruker velger sende regning
     if valg == 'f':
         sjosiden.sendRegning()
+        
     #hvis bruker velger å avslutte
     if valg == 'd':
         break
