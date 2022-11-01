@@ -16,6 +16,9 @@ class Hotell:
     """
 
     def __init__(self, rom, sengPerRom):
+        """
+        Metode for å opprette variabler i klassen
+        """
         self.rom = int(rom)
         self.register = []  # ENDRE NAVN TIL REGISTER??
         self.kapasitet = int(rom)
