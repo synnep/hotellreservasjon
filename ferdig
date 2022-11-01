@@ -269,11 +269,13 @@ while True:
     if valg == 'p':
         navn = input("Skriv inn navn på kunden: ")
         email = input("Skriv inn email til kunden: ")
+        eksistere = False
         for r in range(len(sjosiden.register)):
             if(sjosiden.register[r].navn == navn and sjosiden.register[r].email == email):
                 sjosiden.register[r].visInfo()
-            else:
-                print("Kunden eksisterer ikke")
+                eksistere = True
+        if eksistere == False:
+            print("Kunden eksisterer ikke")
     #hvis bruker velger sende regning
     if valg == 'f':
         sjosiden.sendRegning()
