@@ -12,6 +12,7 @@ class Hotell:
 
     Parametre:
         Rom (int): antall rom på hotellet
+        sengPerRom (int): antall senger per rom
     """
 
     def __init__(self, rom, sengPerRom):
