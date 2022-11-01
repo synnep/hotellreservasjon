@@ -225,10 +225,13 @@ while True:
     
     """
     
+    #Utfører reservasjon
     if valg == 'r':
         sjosiden.reservasjon()
+    #sjekker ledige rom
     if valg == 'l':
         sjosiden.sjekkLedigRom()
+    #endrer bestilling
     if valg == 'e':
         navn1 = input("navn: ")
         email1 = input("email: ")
@@ -237,6 +240,7 @@ while True:
                 sjosiden.register[r].endreRes(r)
             else:
                 print("Fant ikke bestillingen din, skriv inn navn på nytt")
+    #printer kundeinformasjonen
     if valg == 'p':
         navn = input("Skriv inn navn på kunden: ")
         email = input("Skriv inn email til kunden: ")
@@ -245,8 +249,10 @@ while True:
                 sjosiden.register[r].visInfo()
             else:
                 print("Kunden eksisterer ikke")
+    #sender regning            
     if valg == 'f':
         sjosiden.sendRegning()
+    #avslutter koden
     if valg == 'd':
         break
 
