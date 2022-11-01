@@ -17,7 +17,7 @@ class Hotell:
 
     def __init__(self, rom, sengPerRom):
         """
-        Metode for å opprette variabler i klassen
+        Metode for å opprette variabler i hotellklassen
         """
         self.rom = int(rom)
         self.register = []  # ENDRE NAVN TIL REGISTER??
@@ -163,8 +163,10 @@ class Kunde:
         Rabattkode (str)
     """
 
-    # Inisialiseringskoden. Definerer noen parametre til kundeobjektet
     def __init__(self, navn, postnummer, email, gjestKunde, netter):
+        """
+        Metode for å opprette variabler i kundeklassen
+        """
         self.navn = navn
         self.postnummer = postnummer
         self.email = email
