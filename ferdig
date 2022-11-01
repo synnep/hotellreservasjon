@@ -198,7 +198,15 @@ class Kunde:
             print("Du må velge antall gjester som et heltall")
 sjosiden = Hotell(10,4)
 
+
 while True:
+    """
+    Hovedmenyen
+    
+    Her er inputen brukeren kan gjøre for å utføre diverse handlinger
+    
+    """
+    
     print("")
     print("---------------------------------------")
     print("Velkommen til Sjøsiden Hotell!")
@@ -212,6 +220,11 @@ while True:
     print("Skriv 'd' for å avslutte")
     valg = input("Skriv handlingen du vil gjøre: ")
 
+    """
+    if tester som sjekker hva brukeren har som input og utfører handlingene basert på dette
+    
+    """
+    
     if valg == 'r':
         sjosiden.reservasjon()
     if valg == 'l':
