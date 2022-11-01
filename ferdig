@@ -43,10 +43,10 @@ class Hotell:
         gjest = input("Skriv inn antallet gjester du bestiller for: ")
         
         try:
-            gjest = int(gjest)
+            gjest = abs(int(gjest))
             netter = input("Skriv inn antall netter: ")
             try:
-                netter = int(netter)
+                netter = abs(int(netter))
                 kunden = Kunde(navn, postnummer, email, gjest, netter)
                 
                 if(m.ceil(gjest/self.sengPerRom) <= self.kapasitet):
@@ -194,22 +194,22 @@ class Kunde:
             sjosiden.register[index].gjestKunde/sjosiden.sengPerRom)
 
         # Spør om en ny input som skal erstatte gjest-egenskapen i Kunde-objektet
-        nyGjest = int(input(
-            f"Nytt antall gjester (tidligere {sjosiden.register[index].gjestKunde}): "))
+        nyGjest = input(f"Nytt antall gjester (tidligere {sjosiden.register[index].gjestKunde}): ")
 
         # Sjekker om vi får valueError (vi får det om nyGjest ikke er et heltall)
         try:
+            nyGjest= abs(int(nyGjest))
             # Hvis vi ikke får valueError blir Kunde-objektets gjest-egenskap suksessfullt endret
             sjosiden.register[index].gjestKunde = nyGjest
 
             # Spør deretter om input for å erstatte netter-egenskapen til kundeobjektet
-            nyNetter = int(input(
-                f"antall netter (tidligere {sjosiden.register[index].netter}): "))
+            nyNetter = input(f"antall netter (tidligere {sjosiden.register[index].netter}): ")
 
             # Sjekker igjen om vi får valueError (netter ikke heltall)
             try:
                 # Hvis vi ikke får det erstatter vi netter-egenskapen
-                sjosiden.register[index].netter = (nyNetter)
+                nyNetter = abs(int(nyNetter))
+                sjosiden.register[index].netter = nyNetter
 
                 # Fjerner nå det nye antallet rom som trengs ut ifra antallet gjester delt på kapasitet til hvert rom
                 sjosiden.kapasitet -= m.ceil(
@@ -223,7 +223,7 @@ class Kunde:
         # Printer ut endringene under for å gjøre det oversiktlig
         print("Endret reservasjon:")
         print(f"  Antall gjester: {sjosiden.register[index].gjestKunde}")
-        print(f"  Antall netter: {sjosiden.register[index].nyNetter}")
+        print(f"  Antall netter: {sjosiden.register[index].netter}")
 
 
 # oppretter sjøsiden hotell
