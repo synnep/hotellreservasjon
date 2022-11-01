@@ -7,12 +7,22 @@ Created on Thu Oct 27 14:06:40 2022
 import math as m
 
 class Hotell:
-    """
+       """
     Klasse for å lage hotell-objekt.
 
     Parametre:
         Rom (int): antall rom på hotellet
-        sengPerRom (int): antall senger per rom
+        SengPerRom (int): antall senger per rom
+        Kapasitet (int): antall rom ledig
+        Register (liste): liste for alle kundene / bestillingene
+        maksAntGjester (int): det maksimale antallet gjester på hotellet
+        antGjester (int): antallet gjester
+       
+    Metoder:
+        initiialiseringsmetode
+        reservasjon-metode
+        send-regning-metode
+        sjekk-ledige-rom-metode
     """
 
     def __init__(self, rom, sengPerRom):
