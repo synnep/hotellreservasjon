@@ -16,11 +16,8 @@ class Hotell:
     """
 
     def __init__(self, rom, sengPerRom):
-        """
-        Metode for å opprette variabler i hotellklassen
-        """
         self.rom = int(rom)
-        self.register = []  # ENDRE NAVN TIL REGISTER??
+        self.register = [] 
         self.kapasitet = int(rom)
         self.sengPerRom = sengPerRom
         self.maksAntGjester = rom*self.sengPerRom
@@ -30,18 +27,21 @@ class Hotell:
         """
         Metode som utfører reservasjon av et rom.
 
-        Bruker inputs for å få verdier til parametre for kundeklassen, og lager en kunde.
-        Kunden tar et rom, så de kapasitet skal bli 1 mindre
+        Bruker inputs for å få verdier til parametre for kundeklassen, og lager en kunde ved hjelp av kunde-klasse.
+        Kunden tar rom, så kapasitet skal bli x rom mindre
         """
         print("")
         navn = input("Skriv inn navn: ")
         postnummer = input("Skriv inn postnummer: ")
         email = input("Skriv inn email: ")
+        
         for i in range(len(self.register)):
             if navn == self.register[i].navn and email == self.register[i].email:
                 print("Kunden har allerede en reservasjon!")
                 return
+                
         gjest = input("Skriv inn antallet gjester du bestiller for: ")
+        
         try:
             gjest = int(gjest)
             netter = input("Skriv inn antall netter: ")
@@ -52,6 +52,7 @@ class Hotell:
                 if(m.ceil(gjest/self.sengPerRom) <= self.kapasitet):
                     self.kapasitet -= m.ceil(gjest/self.sengPerRom)
                     self.register.append(kunden)
+                    
                     print("\n-------<RESERVASJON>------")
                     print(f" Kunde ( {kunden} ) med:")
                     print(f" Navn: {navn}, Email: {email}, Postnummer: {postnummer}")
@@ -78,6 +79,7 @@ class Hotell:
             disse sengeplassene. 
         Printer verdierne til ledige rom og ledige sengeplasser.
         """
+        
         if self.kapasitet == 0:
             print("Det er ingen ledige rom på hotellet.")
             print("Bedre lykke på vårt fantastiske hotell neste gang.")
@@ -85,11 +87,6 @@ class Hotell:
             print(f"Det er {self.kapasitet} ledige rom på hotellet.")
             ledigSengeplass = self.kapasitet*self.sengPerRom
             print(f"Dette tilsvarer {ledigSengeplass} ledige sengeplasser.")
-
-        #return (self.kapasitet, ledigSengeplass)
-        # variabel = input("Tilbake til meny (tast m): ")
-        # if(variabel == 'm'):
-        #   meny == True
 
     def sendRegning(self):
         """
@@ -100,6 +97,7 @@ class Hotell:
             Regner ut totalsum og printer dette til konsollen
             Hvis besillingsnavn ikke eksisterer printes dette
         """
+        
         prisNatt = 1000
         rabattkode10 = "10av"
         rabattkode20 = "20av"
@@ -109,8 +107,6 @@ class Hotell:
         bestilling = False
 
         for n in range(len(self.register)):
-            # print(n)
-            # print(self.register[n].navn)
             if navn == self.register[n].navn and email == self.register[n].email:
                 bestilling = True
                 index = n  # index
@@ -128,6 +124,7 @@ class Hotell:
                         int(self.register[index].netter) * \
                         int(self.register[index].gjestKunde) * 0.9
                     print("Totalsum ble på: ", totSum)
+                    
                 elif rabattkode == rabattkode20:
                     print(
                         f"Regning er sendt til {self.register[index].navn} og epost {self.register[index].email}.")
@@ -141,13 +138,13 @@ class Hotell:
             elif svar == "nei":
                 print(
                     f"Regning er sendt til {self.register[index].navn} og epost {self.register[index].email}.")
-                totSum = prisNatt * \
-                    int(self.register[index].netter) * \
-                    int(self.register[index].gjestKunde)
+                totSum = prisNatt * int(self.register[index].netter) * int(self.register[index].gjestKunde)
                 print("Totalsum ble på: ", totSum)
+                
             sjosiden.kapasitet+= m.ceil(sjosiden.register[index].gjestKunde/sjosiden.sengPerRom)
             self.register.pop(index)
-            print("Kunden er fjernet fra registere")
+            
+            print("Kunden er fjernet fra registeret.")
         else:
             print("Navnet du skrev inn har ingen bestilling liggende hos hotellet.")
 
@@ -157,25 +154,25 @@ class Kunde:
     Klasse for å lage kunde-objekter.
 
     Parametre:
-        Navn (str)
-        Postnummer (str)
-        Email (str)
-        Rabattkode (str)
+        navn (str): navn kunden reserverer reservasjonen med
+        postnummer (str): postnummer til kunden
+        email (str): epost til kunden
+        gjestKunde (int): antall gjester kunden bestiller for
+        netter (int): antall netter kunden bestiller for
     """
 
+    # Inisialiseringskoden. Definerer noen parametre til kundeobjektet
     def __init__(self, navn, postnummer, email, gjestKunde, netter):
-        """
-        Metode for å opprette variabler i kundeklassen
-        """
         self.navn = navn
         self.postnummer = postnummer
         self.email = email
         self.gjestKunde = gjestKunde
         self.netter = netter
 
-    # OPPGAVE I: TENGER KANSKJE OPPDATERING SENERE
-
     def visInfo(self):
+        """
+        Printer navn, epost, antall gjester og antall netter om spesifikk kunde
+        """
         print("\n*-*KUNDE*-*")
         print(f"\tNavn: {self.navn}")
         print(f"\tEmail: {self.email}")
@@ -183,30 +180,32 @@ class Kunde:
         print(f"\tAntall netter: {self.netter}")
 
     def endreRes(self,r):
+        """
+        Metode som endrer bestillingen til en spesifikk kunde.
+            Fjerner først rommet i kapasiteten
+            Ber om antall nye gjester og antall nye netter
+            Legger så til nytt rom basert på antall nye gjester i kapasitet
+        """
+        
         self.r = r
-        sjosiden.kapasitet+= m.ceil(sjosiden.register[self.r].gjestKunde/sjosiden.sengPerRom)
-        nyGjest= input(f"antall gjester (tidligere {sjosiden.register[self.r].gjestKunde}): ")
+        sjosiden.kapasitet += m.ceil(sjosiden.register[self.r].gjestKunde/sjosiden.sengPerRom)
+        nyGjest = input(f"Antall gjester (tidligere {sjosiden.register[self.r].gjestKunde}): ")
+        
         try:
             sjosiden.register[self.r].gjestKunde = int(nyGjest)
-            nyNett = input(f"antall netter (tidligere {sjosiden.register[self.r].netter}): ")
+            nyNett = input(f"Antall netter (tidligere {sjosiden.register[self.r].netter}): ")
             try:
                 sjosiden.register[self.r].netter = int(nyNett)
-                sjosiden.kapasitet-= m.ceil(sjosiden.register[self.r].gjestKunde/sjosiden.sengPerRom)
+                sjosiden.kapasitet -= m.ceil(sjosiden.register[self.r].gjestKunde/sjosiden.sengPerRom)
             except ValueError:
-                print("Du må skrive inn antall netter som et heltall")
+                print("Du må skrive inn antall netter som et heltall.")
         except ValueError:
-            print("Du må velge antall gjester som et heltall")
+            print("Du må velge antall gjester som et heltall.")
+
+# oppretter sjøsiden hotell
 sjosiden = Hotell(10,4)
 
-
 while True:
-    """
-    Hovedmenyen
-    
-    Her er inputen brukeren kan gjøre for å utføre diverse handlinger
-    
-    """
-    
     print("")
     print("---------------------------------------")
     print("Velkommen til Sjøsiden Hotell!")
@@ -220,18 +219,10 @@ while True:
     print("Skriv 'd' for å avslutte")
     valg = input("Skriv handlingen du vil gjøre: ")
 
-    """
-    if tester som sjekker hva brukeren har som input og utfører handlingene basert på dette
-    
-    """
-    
-    #Utfører reservasjon
     if valg == 'r':
         sjosiden.reservasjon()
-    #sjekker ledige rom
     if valg == 'l':
         sjosiden.sjekkLedigRom()
-    #endrer bestilling
     if valg == 'e':
         navn1 = input("navn: ")
         email1 = input("email: ")
@@ -240,7 +231,6 @@ while True:
                 sjosiden.register[r].endreRes(r)
             else:
                 print("Fant ikke bestillingen din, skriv inn navn på nytt")
-    #printer kundeinformasjonen
     if valg == 'p':
         navn = input("Skriv inn navn på kunden: ")
         email = input("Skriv inn email til kunden: ")
@@ -249,10 +239,8 @@ while True:
                 sjosiden.register[r].visInfo()
             else:
                 print("Kunden eksisterer ikke")
-    #sender regning            
     if valg == 'f':
         sjosiden.sendRegning()
-    #avslutter koden
     if valg == 'd':
         break
 
