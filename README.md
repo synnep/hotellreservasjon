@@ -1,4 +1,5 @@
 # hotellreservasjon
 oppgave i IT2, Trygve, Are og Synne
-objektorientert programmering
-reservere hotellrom i hotellobjekt
+# beskrivelse
+objektorientert programmering, 
+reserverer hotellrom i hotellobjekt
